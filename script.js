@@ -2,10 +2,11 @@
 document.getElementById("calculate").addEventListener("click", calculateTip);
 document.getElementById("reset").addEventListener("click", reset);
 
-function calculateTip() {
+function calculateTip() {    
     let bill = parseInt(document.getElementById('bill').value);
     let service = parseInt(document.getElementById('service').value);
     let numOfClients = parseInt(document.getElementById('numOfClients').value);
+    if(isNaN(bill) || isNaN(service) || isNaN(numOfClients)) return 0;
     let individualBill = 0; 
     let tip = bill * service/100;
     let totalbill = bill + tip;
@@ -27,5 +28,5 @@ function reset() {
 }
 
 function thousandSeperator(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
