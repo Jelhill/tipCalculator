@@ -10,10 +10,10 @@ function calculateTip() {
     let tip = bill * service/100;
     let totalbill = bill + tip;
     individualBill = totalbill / numOfClients;
-    document.getElementById('totalBill').innerHTML = `<strong>${totalbill.toFixed(2)}`;
-    document.getElementById('tip').innerHTML = `<strong>${tip.toFixed(2)}`;
-    document.getElementById('billPerPerson').innerHTML = `<strong>${individualBill.toFixed(2)}`;
-    document.getElementById('tipPerPerson').innerHTML = `<strong>${(tip/numOfClients).toFixed(2)}`;
+    document.getElementById('totalBill').innerHTML = `<strong>₦${thousandSeperator(totalbill.toFixed(2))}`;
+    document.getElementById('tip').innerHTML = `<strong>₦${thousandSeperator(tip.toFixed(2))}`;
+    document.getElementById('billPerPerson').innerHTML = `<strong>₦${thousandSeperator(individualBill.toFixed(2))}`;
+    document.getElementById('tipPerPerson').innerHTML = `<strong>₦${thousandSeperator((tip/numOfClients).toFixed(2))}`;
 }
 
 function reset() {
@@ -24,4 +24,8 @@ function reset() {
     document.getElementById('tip').innerHTML = `0.00`;
     document.getElementById('billPerPerson').innerHTML = `0.00`;
     document.getElementById('tipPerPerson').innerHTML = `0.00`
+}
+
+function thousandSeperator(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }
