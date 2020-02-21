@@ -1,30 +1,35 @@
+let bill = document.getElementById('bill');
+let service = document.getElementById('service');
+let numOfClients = document.getElementById('numOfClients');
+let totalBillDisplay = document.getElementById('totalBill');
+let tipDisplay = document.getElementById('tip');
+let billPerPersonDisplay = document.getElementById('billPerPerson');
+let tipPerPersonDisplay = document.getElementById('tipPerPerson');
+
 
 document.getElementById("calculate").addEventListener("click", calculateTip);
 document.getElementById("reset").addEventListener("click", reset);
 
 function calculateTip() {    
-    let bill = parseInt(document.getElementById('bill').value);
-    let service = parseInt(document.getElementById('service').value);
-    let numOfClients = parseInt(document.getElementById('numOfClients').value);
-    if(isNaN(bill) || isNaN(service) || isNaN(numOfClients)) return 0;
+    if(isNaN(parseInt(bill.value)) || isNaN(parseInt(service.value)) || isNaN(parseInt(numOfClients.value))) return 0;
     let individualBill = 0; 
-    let tip = bill * service/100;
-    let totalbill = bill + tip;
-    individualBill = totalbill / numOfClients;
-    document.getElementById('totalBill').innerHTML = `<strong>₦${thousandSeperator(totalbill.toFixed(2))}`;
-    document.getElementById('tip').innerHTML = `<strong>₦${thousandSeperator(tip.toFixed(2))}`;
-    document.getElementById('billPerPerson').innerHTML = `<strong>₦${thousandSeperator(individualBill.toFixed(2))}`;
-    document.getElementById('tipPerPerson').innerHTML = `<strong>₦${thousandSeperator((tip/numOfClients).toFixed(2))}`;
+    let tip = parseInt(bill.value) * service.value/100;
+    let totalbill = parseInt(bill.value) + tip;
+    individualBill = totalbill / parseInt(numOfClients.value);    
+    totalBillDisplay.innerHTML = `<strong>₦${thousandSeperator(totalbill.toFixed(2))}`;
+    tipDisplay.innerHTML = `<strong>₦${thousandSeperator(tip.toFixed(2))}`;
+    billPerPersonDisplay.innerHTML = `<strong>₦${thousandSeperator(individualBill.toFixed(2))}`;
+    tipPerPersonDisplay.innerHTML = `<strong>₦${thousandSeperator((tip/parseInt(numOfClients.value)).toFixed(2))}`;
 }
 
 function reset() {
-    document.getElementById('bill').value = "";
-    document.getElementById('service').value = "";
-    document.getElementById('numOfClients').value = "";
-    document.getElementById('totalBill').innerHTML = `0.00`;
-    document.getElementById('tip').innerHTML = `0.00`;
-    document.getElementById('billPerPerson').innerHTML = `0.00`;
-    document.getElementById('tipPerPerson').innerHTML = `0.00`
+    bill.value = "";
+    service.value = "";
+    numOfClients.value = "";
+    totalBillDisplay.innerHTML = `0.00`;
+    tipDisplay.innerHTML = `0.00`;
+    billPerPersonDisplay.innerHTML = `0.00`;
+    tipPerPersonDisplay.innerHTML = `0.00`
 }
 
 function thousandSeperator(num) {

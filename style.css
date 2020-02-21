@@ -7,8 +7,8 @@ body{
     color: gray;
     text-align: center;
     margin: auto;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #container {
@@ -26,8 +26,8 @@ body{
 #btn-wrapper{
     width: 80%;    
     margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 #input-wrapper{
     width: 80%;
